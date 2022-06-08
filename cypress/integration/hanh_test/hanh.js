@@ -11,13 +11,12 @@ describe("my test", function () {
   before(() => {
     LoginPage.visit();
     LoginPage.submit("hanhdth@symper.vn", "Symper@123BA");
-    LoginPage.wait(10000);
+    // LoginPage.wait(10000);
+    // LoginPage.waitUltilLoginSuccess();
     LoginPage.getdataShowList();
     // LoginPage.wait(10000);
   });
   it("check sorf", function () {
-    LoginPage.wait(30000);
-
     cy.get(
       "[aria-colindex='2'][col-id='id'] .fs-13.symper-table-dropdown-button.mdi.mdi-filter-variant.symper-filter-button"
     ).click();
@@ -33,8 +32,6 @@ describe("my test", function () {
       });
   });
   it("check filter", function () {
-    LoginPage.wait(30000);
-
     let a = cy
       .get("[aria-colindex='2'][col-id='id']")
       .then(($cells) => Cypress._.map($cells, "textContent"));
@@ -56,7 +53,6 @@ describe("my test", function () {
     cy.get(".pt-1.dropdown-item button .v-btn__content")
       .contains("Áp dụng")
       .click();
-    LoginPage.wait(5000);
 
     cy.get("[aria-colindex='2'][col-id='id']")
       .then(($cells) => Cypress._.map($cells, "textContent"))
