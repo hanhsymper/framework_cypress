@@ -27,6 +27,7 @@ class LoginPage {
   submit(fillEmail, password) {
     this.fillEmail.type(fillEmail);
     this.fillPassWord.type(`${password}{enter}`);
+    let pageHeader = cy.get(".app-header-bg-color");
     // cy.contains("Đăng nhập").click();
   }
   get documentLink() {
