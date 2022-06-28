@@ -1,12 +1,4 @@
 module.exports = [
-  //   {
-  //     title: "login success",
-  //     email: "hanhdth@symper.vn",
-  //     password: "Symper@123BA",
-  //     expect: true,
-
-  //     messages: [],
-  //   },
   {
     title: "login email invalid",
     email: "hanhdthsymper.vn",
@@ -17,7 +9,7 @@ module.exports = [
   {
     title: "password empty",
     email: "hanhdth@symper.vn",
-    password: "    ",
+    password: "''",
     expect: "check_validate",
     messages: ["Mật khẩu không được để trống"],
   },
