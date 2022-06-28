@@ -17,9 +17,7 @@ export const testLogin = function (data) {
         cy.url().should("include", "/");
       } else if (data.expect == "check_validate") {
         LoginPage.validate(data.email, data.password);
-
         gettitleListText(el.messages).then((data1) => {
-          cy.get(data1);
           expect(data.messages).to.deep.equal(data1);
         });
       } else {
