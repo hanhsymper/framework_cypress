@@ -1,4 +1,5 @@
 import * as el from "../element/Application.mjs";
+import { checkDataDetail } from "../helper/get_text.js";
 class ApplicationPage {
   clickMyApp() {
     cy.get(el.btnApplication).click({ force: true });
@@ -25,6 +26,15 @@ class ApplicationPage {
   selectActionWFL() {
     cy.get(el.selectActionWFL).contains(el.nameActionWFL).click();
   }
+  checkMessageStartWflSuccess(message) {
+    cy.isVisible(el.notification);
+    cy.get(el.notification).should("contain.text", message);
+  }
+  checkMessageCompleteSuccess(message) {
+    cy.isVisible(el.notification);
+    cy.get(el.notification).should("contain.text", message);
+  }
+
   startWFL() {
     this.openSilder();
     this.openTooltip();
@@ -38,7 +48,6 @@ class ApplicationPage {
     this.clickMyApp();
     this.openDetailApp();
     this.selectDoc();
-
     cy.get(
       "[aria-colindex='3'][col-id='id'] .fs-13.symper-table-dropdown-button.mdi.mdi-filter-variant.symper-filter-button"
     ).click();
@@ -61,7 +70,42 @@ class ApplicationPage {
     cy.get(".pt-1.dropdown-item button .v-btn__content")
       .contains("Áp dụng")
       .click();
+    // cy.get(".ag-center-cols-container").should("have.css", "height", "21px");
+    // cy.wait(50000);
+  }
+  checkDetailDoc(data) {
     cy.get(".ag-center-cols-container").should("have.css", "height", "21px");
+
+    cy.get(
+      ".ag-center-cols-container .ag-row.ag-row-focus.ag-row-even.ag-row-level-0.ag-row-position-absolute.ag-row-first.ag-row-last"
+    ).rightclick({
+      force: true,
+    });
+    cy.get(".ag-menu-option-part.ag-menu-option-text")
+      .contains("Chi tiết")
+      .click();
+    cy.wait(20000);
+    // let a = Object.keys(data);
+    // for (let i of a) {
+    //   checkDataDetail(i.id, i.value);
+    // }
+  }
+  scrollViewToRight(data) {
+    let a = Object.keys(data);
+    for (let i of a) {
+      cy.get("[col-id=" + i + "]").then((el) => {
+        if (el.is(":visible")) {
+          // cy.get(".ag-body-horizontal-scroll-viewport").scrollTo("right", {
+          //   duration: 2000,
+          // });
+          cy.log("ok");
+        } else {
+          cy.get(".ag-body-horizontal-scroll-viewport").scrollTo("right", {
+            duration: 2000,
+          });
+        }
+      });
+    }
   }
   clickLogout() {
     cy.get(el.btn_icon_opensidebar).click();
