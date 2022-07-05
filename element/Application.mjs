@@ -22,3 +22,4 @@ export const icon_config =
   ".v-icon.notranslate.mdi.mdi-cog-outline.theme--light";
 export const btn_logout = ".v-list-item__title.fs-13.fm";
 export const name_logout = "Đăng xuất";
+export const notification = ".vue-notification-wrapper";
