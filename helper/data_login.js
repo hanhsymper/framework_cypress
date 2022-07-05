@@ -1,3 +1,3 @@
-export const URL = "https://inter-apps.symper.vn/#/login";
-export const EMAIL = "Hanhdth@symper.vn";
-export const PASSWORD = "Symper@123BA";
+export const URL = "https://symper-apps.vthmgroup.vn/#/workflow";
+export const EMAIL = "yenqt@symper.vn";
+export const PASSWORD = "Symper@123";
