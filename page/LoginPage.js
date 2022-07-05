@@ -7,6 +7,8 @@ class LoginPage {
   submit(fillEmail, password) {
     cy.get(el.txtEmail).type(fillEmail);
     cy.get(el.txtPassword).type(`${password}{enter}`);
+    cy.isVisible(".v-dialog.v-dialog--active.v-dialog--persistent");
+    cy.get(".v-btn.v-btn--contained.theme--light.v-size--small").click();
   }
   validate(fillEmail, password) {
     cy.get(el.txtEmail).type(fillEmail);
