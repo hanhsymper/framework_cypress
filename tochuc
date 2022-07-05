@@ -1,0 +1,58 @@
+Tổ chức code tốt để giúp ích cho viêc bảo trì sau này
++Khả năng tái sử dụng
++khả năng bảo trì
+*Ví dụ có nhiều trang trong ứng dụng
+=>khắc phúc vấn đề trùng lặp và cập nhật 
++Tạo ra các class chứa các pt xác định vị trí của các pt
+và thực hiện 1 số thao tác để thực hiện điều đó
++
+Integration testing:là kiêm thử tích hợp,mỗi modu 
+phần mền riêng biệt 
+được kế hợp và kiểm thử theo  nhóm
++mangu fatSn ,mạng group
++
+
+Trong foder intergration ta cần có thư mục sau
++Page:là nơi lưu trữ đối tượng
+->giảm sự trùng lặp và cải thiện khả năng bảo trì
+Ưu điêm:
++Mẫu đối tượng cho biết các hoạt động và luồng trong giao diện 
+người dùng =>tách biệt khỏi xác minh=>lm mã sạch và dễ hiểu
++Là kho lưu trữ đối tượng với các trường hợp thử nghiệm
++Mã ít hơn,được tối ưu hóa và dễ bảo trì vì các pt trang có thể
+sử dụng lại trong lớp POM
++Các pt có tên thực tế hơn,=>dễ dàng ánh xạ
+
+
+-fixtures:data test
+-intergaration:test
+-page-object:
+-core:chứa cấu hình report,..
+-utils:chưa các file sử lý xử liệu về string,number,...
+-helper:chứa các hàm dùng chung
+-logs:chưa các file ghi log dữ liệu
+-plugis:cấu hình, tiền xử lý, kết nối vào các sự kiện vòng đời hoặc xác định các tác vụ tùy chỉnh.
+-suporst:
+//videos:chứa videos
+//screenshots:chứa hình ảnh
++index.js:setup cho mọi test case là nơi,inport thư viện hay data gì chung
++commands.js:override các hàm có sẵn trong cypress
+-Dữ liệu thì nên truy vấn hẳn vào database để check cho chính xác
+-cypress.jon:cypress config
+-plugis:lắng nghe sự kiện
+
+
+-cypress
++intergration:chứa các kịch bản test
+-pages:chứa các method sử dụng trong trong page đó
+-ui:chứa các chuỗi cssSelector để dùng xác định vị trí các element trong giao diện
+-utils:chứa các hàm xử lý dữ liệu(string,number)
+-helper:chứa các hàm dùng chung,thông tin dùng chung 
+-core:handle data 
+-logs:chưa các file logs dữ liệu
+
+https://co-well.vn/nhat-ky-cong-nghe/cypress-khong-danh-rieng-cho-qae/
+element
+
+
+
