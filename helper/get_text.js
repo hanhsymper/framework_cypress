@@ -19,3 +19,12 @@ export const checkTitle = (data, title, i) => {
     })
     .should("equal", title);
 };
+export const checkDataDetail = (data, title) => {
+  cy.get(data)
+    .invoke("text")
+    .then(cy.log)
+    .then((text) => {
+      return text.trim();
+    })
+    .should("equal", title);
+};
