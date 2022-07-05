@@ -15,13 +15,19 @@ class MyItemPage {
   getSTT() {
     return cy.get(el.input_stt).invoke("val");
   }
+  checkMessageSubmitSuccess(message) {
+    cy.isVisible(el.notification);
+    cy.get(el.notification).should("contain.text", message);
+  }
   submitWfl(data) {
-    cy.get(el.input_start_date).click();
-    cy.contains(
-      ".v-date-picker-table.v-date-picker-table--date.theme--light tr td",
-      28
-    ).click();
-    cy.get(el.input_text).type(data.name);
+    // cy.get(el.input_ngay_start).click();
+    // cy.contains(
+    //   ".v-date-picker-table.v-date-picker-table--date.theme--light tr td",
+    //   28
+    // ).click();ngay_start
+    cy.get(el.input_ngay_start).type(data.ngay_start.value);
+
+    cy.get(el.input_text).type(data.hanh_test.value);
     cy.wait(3000);
     cy.get(el.button_submit).click();
     cy.wait(20000);
