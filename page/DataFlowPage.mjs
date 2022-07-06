@@ -57,17 +57,25 @@ class DataFlowPage {
     //   cy.get(
     //     ".vue-notification-wrapper.vn-fade-enter-active.vn-fade-enter-to"
     //   ).should("not.exist")
-    cy.isVisible(".vue-notification-wrapper");
-    cy.get(".vue-notification-wrapper").should("contain.text", title);
-    // cy.get("body").then((body) => {
-    //   if (body.find(".vue-notification-wrapper").length > 0) {
-    //     cy.isVisible(".vue-notification-wrapper");
-    //     cy.get(".vue-notification-wrapper").should("contain.text", title);
-    //   } else {
-    //     cy.get(
-    //       ".vue-notification-wrapper.vn-fade-enter-active.vn-fade-enter-to"
-    //     ).should("not.exist");
-    //   }
+    // cy.isVisible(".vue-notification-wrapper");
+    // cy.get(".vue-notification-wrapper").should("contain.text", title);
+    // if (cy.get(".vue-notification-wrapper").wait(2000).length > 0) {
+    //   cy.get(".vue-notification-wrapper").should("contain.text", title);
+    // } else {
+    //   cy.get(
+    //     ".vue-notification-wrapper.vn-fade-enter-active.vn-fade-enter-to"
+    //   ).should("not.exist");
+    // }
+    cy.get(".vue-notification-group")
+      .wait(2500)
+      .should("have.css", "height", "0px");
+
+    // cy.isVisible(".vue-notification-wrapper");
+    // cy.get(".vue-notification-wrapper").wait(2000).should("not.exist");
+    // if()
+    // cy.get(".vue-notification-wrapper").should(($lis) => {
+    //   cy.wait(1000);
+    //   expect($lis).to.have.length(0);
     // });
     //   } else {
     //   }
