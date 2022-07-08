@@ -80,6 +80,84 @@ class DataFlowPage {
     //   } else {
     //   }
   }
+  findNodeName(i) {
+    return cy
+      .get(`.w-100.fs-13 tr[name=${i}] .v-text-field__slot input`)
+      .eq(0)
+      .invoke("val");
+  }
+  clickOpenIconFormular(i) {
+    cy.get(
+      `.w-100.fs-13 tr[name=${i}] .v-expansion-panel.sym-expand-panel .v-expansion-panel-header__icon`
+    ).click();
+  }
+  checkSaveSuceess(title) {
+    cy.isVisible(".vue-notification-wrapper");
+    cy.get(".vue-notification-wrapper").should("contain.text", title);
+  }
+  // clickCloseIconFormular() {
+
+  // }
+  getFormular(i) {
+    cy.get(
+      `.w-100.fs-13 tr[name=${i}] .v-expansion-panel.sym-expand-panel .v-expansion-panel-content.sym-v-expand-content.py-1`
+    ).type(`{selectall}{backspace}{selectall}{backspace}`);
+  }
+  setFormular(i, data) {
+    cy.get(
+      `.w-100.fs-13 tr[name=${i}] .v-expansion-panel.sym-expand-panel .v-expansion-panel-content.sym-v-expand-content.py-1`
+    ).type(`${data}`);
+  }
+
+  clickSave() {
+    cy.is(
+      ".mr-2.v-btn.v-btn--depressed.theme--light.v-size--small.primary"
+    ).click();
+  }
+  // patseFomular(name, data) {
+  //   let data1 = cy.get(".w-100.fs-13>tr");
+  //   data1.then(($count) => {
+  //     // cy.log($count);
+  //     for (let i = 0; i < $count.length; i++) {
+  //       cy.log(i);
+  //       this.findNodeName(i).then(($a) => {
+  //         if ($a == name) {
+  //           // cy.log("OK");
+  //           this.clickOpenIconFormular(i);
+  //           this.getFormular(i);
+  //           this.setFormular(i, data);
+  //           // cy.get(
+  //           //   `.w-100.fs-13 tr[name=${i}] .v-expansion-panel.sym-expand-panel .v-expansion-panel-content.sym-v-expand-content.py-1`
+  //           // ).type(`${data}`);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  patseFomular(data) {
+    let data1 = cy.get(".w-100.fs-13>tr");
+    data1.then(($count) => {
+      for (let i = 0; i < $count.length; i++) {
+        this.findNodeName(i).then(($a) => {
+          for (let j = 0; j < Object.keys(data).length; j++) {
+            let formular = data[Object.keys(data)[j]];
+            if ($a == Object.keys(data)[j]) {
+              this.clickOpenIconFormular(i);
+              this.getFormular(i);
+              this.setFormular(i, formular.formula_after);
+            }
+          }
+        });
+      }
+    });
+  }
+  // cy.log($count.length);
+  //     });
+  // //
 }
+// if (this.findNodeName(). == name) cy.log("OK");
+// cy.get(".v-expansion-panel-header__icon").click();
+
 export default new DataFlowPage();
 // vue-notification-wrapper.vn-fade-enter-active.vn-fade-enter-to>
