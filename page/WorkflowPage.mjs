@@ -51,6 +51,7 @@ class WorkflowPage {
       .click();
   }
   clickActionSave() {
+    cy.isVisible(".djs-hit.djs-hit-stroke");
     cy.isVisible(
       ".float-right.mr-1.v-btn.v-btn--depressed.theme--light.v-size--small.primary"
     );
@@ -59,8 +60,10 @@ class WorkflowPage {
     ).click();
   }
   checkNotification(title) {
-    cy.isVisible(".vue-notification-wrapper");
-    cy.get(".vue-notification-wrapper").should("contain.text", title);
+    // cy.isVisible(".vue-notification-wrapper");
+    cy.get(".vue-notification-wrapper")
+      .wait(1000)
+      .should("contain.text", title);
   }
 }
 export default new WorkflowPage();
